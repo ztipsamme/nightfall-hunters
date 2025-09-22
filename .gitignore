@@ -7,4 +7,5 @@
 # Build folders
 bin/
 obj/
-
+*.dll
+*.pdb
