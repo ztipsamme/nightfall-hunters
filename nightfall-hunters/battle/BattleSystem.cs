@@ -1,21 +1,10 @@
+using nightfall_hunters.classes;
 using nightfall_hunters.helpers;
 using nightfall_hunters.ui;
-
-namespace nightfall_hunters.classes;
 
 public static class BattleSystem
 {
     static Random _rnd = new Random();
-    
-    private static void DisplayAction(Player player)
-    {
-        string[] menu = ["Attack!", $"Defend {player.PronounPossessive}self.", "Try running to safety."];
-
-        for (int i = 0; i < menu.Length; i++)
-        {
-            Console.WriteLine($"[{i + 1}] {menu[i]}");
-        }
-    }
     
     private static void EndBattle(Player player, Enemy enemy)
     {
@@ -37,26 +26,19 @@ public static class BattleSystem
 
         Console.ReadKey();
     }
-
-    public static void RandomBattle(Player player)
-    {
-        Enemy nextEnemy = Enemy.GetRandomEnemy();
-        BattleSystem.Run(player, nextEnemy);
-    }
     
     public static void Run(Player player, Enemy enemy)
     {
         StartBattle(player, enemy);
-        DisplayAction(player);
         
+        string[] menu = ["Attack!", $"Defend {player.PronounPossessive}self.", "Try running to safety."];
         
         while (player.Hp > 0 && enemy.Hp > 0)
         {
-            Console.Write("Select: ");
-            string? selected = Console.ReadLine();
+            string? selected = InputHelper.ShowMenu("Choose your next move: ", menu);
         
             Display.DrawSpacer();
-        
+            
             switch (selected)
             {
                 case "1":

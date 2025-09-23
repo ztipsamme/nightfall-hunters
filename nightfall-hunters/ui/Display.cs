@@ -8,10 +8,15 @@ public static class Display
     {
         Console.SetCursorPosition(0, 0);
         DrawCenterText(Program.Title);
-        Console.WriteLine();
+        DrawSpacer();
         
         if (!string.IsNullOrEmpty(player.Name))
+        {
             DrawCenterText(player.Status(), ' ');
+            DrawSpacer();
+        }
+        
+        DrawDevider();
         DrawSpacer();
     }
 
@@ -30,12 +35,13 @@ public static class Display
     
     public static void DrawSpacer () => Console.WriteLine();
 
-    public static void ClearBody()
+    public static void ClearBody(int leveTopRows = 5)
     {
-        int headerHeight = 5;
-
+        int headerHeight = leveTopRows;
+        
         for (int i = headerHeight; i < Console.WindowWidth; i++)
         {
+            Console.SetCursorPosition(0, i);
             Console.Write(new string(' ', Console.WindowWidth));
         }
         

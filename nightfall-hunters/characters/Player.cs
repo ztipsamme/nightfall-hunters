@@ -25,8 +25,9 @@ public class Player : Character
     
     public void CreateCharacter()
     {
-        int statsLine = Console.CursorTop;
-
+        Display.DrawCenterText("Create Character");
+        Display.DrawSpacer();
+        
         Name = InputHelper.AskUntilValid(
             "Enter your name:",
             "Must be between 1 and 20 characters.",
@@ -34,8 +35,11 @@ public class Player : Character
             input => input
         );
 
-        Gender = InputHelper.AskEnum<Gender>("Select gender:");
-        Role = InputHelper.AskEnum<Role>("Select class:");
+        Display.DrawSpacer();
+        Gender = InputHelper.ShowMenu<Gender>("Select gender:");
+        
+        Display.DrawSpacer();
+        Role = InputHelper.ShowMenu<Role>("Select class:");
 
         SetStatsByClass();
     }
@@ -78,18 +82,18 @@ public class Player : Character
 
     public bool Run(Enemy enemy)
     {
-        StoryNodeHelper.StoryTeller($"👟 {Name} tries to run away...");
+        StoryNode.Tell($"👟 {Name} tries to run away...");
         TakeDamage(this);
 
         if (_rnd.Next(1, 3) % 2 == 0)
         {
             int loss = _rnd.Next(10, 100);
             Gold -= loss;
-            StoryNodeHelper.StoryTeller($"\n 💸 {PronounSubject} successfully runs away! {enemy.Name} almost slashed {PronounObject} to pieces. {PronounSubject} lost {loss} gold but {PronounSubject.ToLower()}'s safe... for now.");
+            StoryNode.Tell($"\n 💸 {PronounSubject} successfully runs away! {enemy.Name} almost slashed {PronounObject} to pieces. {PronounSubject} lost {loss} gold but {PronounSubject.ToLower()}'s safe... for now.");
             return true;
         }
 
-        StoryNodeHelper.StoryTeller($"{enemy.Name} catches the back of {PronounObject} shirt and drags {PronounObject} back into the alley.");
+        StoryNode.Tell($"{enemy.Name} catches the back of {PronounObject} shirt and drags {PronounObject} back into the alley.");
         return false;
     }
     

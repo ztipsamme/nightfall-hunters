@@ -2,7 +2,7 @@ namespace nightfall_hunters.classes;
 
 public class Enemy: Character
 {
-    public static  List<Enemy> Enemies = new List<Enemy>
+    public static Enemy[] Enemies = new Enemy[]
     {
         new Enemy("Fangs", 50, 10, 100 ),
         new Enemy("Shadow", 60, 12, 100 ),
@@ -18,7 +18,7 @@ public class Enemy: Character
     
     public static Enemy GetRandomEnemy()
     {   Random rnd = new Random();
-        return Enemies[rnd.Next(0, Enemies.Count)];
+        return Enemies[rnd.Next(0, Enemies.Length)];
     }
 
     public void Stats()

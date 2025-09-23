@@ -1,11 +1,7 @@
-# Mac OS
 .DS_Store
-
-# Rider/IDE
 .idea/
-
-# Build folders
 bin/
 obj/
 *.dll
 *.pdb
+*.env
