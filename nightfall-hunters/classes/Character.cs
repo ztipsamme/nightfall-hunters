@@ -19,16 +19,20 @@ public class Character : ICharacter
     public string Name { get; set; }
     public Gender Gender { get; set; }
     public int Hp { get; set; }
+    public int MaxHp { get; set; }
+
     public int Damage { get; set; }
     public double  Gold { get; set; }
 
     public Character() { }
-    public Character(string name, int hp, int damage, double gold)
+    public Character(string name, Gender gender, int hp, int damage, double gold)
     {
         Name = name;
+        Gender = gender;
         Hp = hp;
         Damage = damage;
         Gold = gold;
+        MaxHp = Hp;
     }
     
     public void Attack(ICharacter opponent)

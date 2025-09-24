@@ -4,22 +4,21 @@ using nightfall_hunters.ui;
 
 namespace nightfall_hunters.classes;
 
-public enum Role { Warrior, Mage, Archer, Rogue }
+public enum PlayerRole { Warrior, Mage, Archer, Rogue }
 
 public class Player : Character
 {
     private static readonly Random _rnd = new Random();
-    public Role Role { get; set; }
+    public PlayerRole Role { get; set; }
     public string Icon { get; private set; }
-    public int MaxHp { get; set; }
     
     public Player(){}
 
-    public Player(string title, Gender gender, Role role )
+    public Player(string title, Gender gender, PlayerRole playerRole )
     {
         Name = title;
         Gender = gender;
-        Role = role;
+        Role = playerRole;
         SetStatsByClass();
     }
     
@@ -39,7 +38,7 @@ public class Player : Character
         Gender = InputHelper.ShowMenu<Gender>("Select gender:");
         
         Display.DrawSpacer();
-        Role = InputHelper.ShowMenu<Role>("Select class:");
+        Role = InputHelper.ShowMenu<PlayerRole>("Select class:");
 
         SetStatsByClass();
     }
@@ -48,30 +47,31 @@ public class Player : Character
     {
         switch (Role)
         {
-            case Role.Warrior:
+            case PlayerRole.Warrior:
                 Hp = 150;
                 Damage = 20;
                 Icon = "⚔️";
                 break;
-            case Role.Mage:
+            case PlayerRole.Mage:
                 Hp = 80;
                 Damage = 30;
                 Icon = "🔮";
                 break;
-            case Role.Archer:
+            case PlayerRole.Archer:
                 Hp = 100;
                 Damage = 25;
                 Icon = "🏹";
                 break;
-            case Role.Rogue:
+            case PlayerRole.Rogue:
                 Hp = 90;
                 Damage = 22;
                 Icon = "🗡️";
                 break;
         }
 
-        MaxHp = Hp;
         Gold = 100;
+        MaxHp = Hp;
+
     }
     
     public void Defend(Enemy enemy)

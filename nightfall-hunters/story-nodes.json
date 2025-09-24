@@ -1,62 +1,26 @@
 [
   {
     "Title": "Intro",
-    "Texts": [
+    "Description": [
       "🌕✨ The city streets are quiet…",
       "too quiet.",
       "A chill wind snakes through the alleys as {playerName} grips {playerPossessive} weapon, senses alert.",
       "Rumors of mysterious disappearances have reached {playerPossessive} ears,",
       "and tonight, {playerSubject.ToLower()} hunts. 🗡️"
     ]
-  },
-  {
+  }, {
     "Title": "Alley Ambush",
-    "Texts": [
-      "Suddenly, shadows twist and leap from the walls—thieves or worse.",
-      "{playerName} {playerVerb('slashes','casts a spell','fires an arrow','vanishes into the shadows')} at the attackers,",
-      "and the clash of steel and magic echoes through the alley.",
-      "Each strike tests {playerPossessive} skill,",
-      "but {playerSubject.ToLower()} stands unbroken. ⚔️"
-    ]
-  },
-  {
-    "Title": "Forest Hunt",
-    "Texts": [
-      "The forest is alive with whispers and rustling leaves.",
-      "{playerName} {playerVerb('charges','chants','nocks an arrow','moves silently')} toward the glowing eyes between the trees.",
-      "A monstrous beast emerges, fangs bared and claws sharp.",
-      "{playerPossessive} heart pounds as {playerSubject.ToLower()} engages,",
-      "and after a tense struggle, the beast falls. 🌲🐺"
-    ]
-  },
-  {
-    "Title": "Mage’s Trial",
-    "Texts": [
-      "An ancient stone circle hums with arcane energy.",
-      "{playerName} raises {playerPossessive} staff, spell sigils glowing.",
-      "Suddenly, spectral foes materialize, testing {playerPossessive} mastery.",
-      "{playerSubject.ToLower()} counters with precise magic, each incantation pushing the spirits back,",
-      "until silence returns and the stones hum approval. 🔮"
-    ]
-  },
-  {
-    "Title": "Rogue’s Challenge",
-    "Texts": [
-      "Moonlight glints off cobblestones as {playerName} slips into the enemy stronghold.",
-      "Traps click and guards patrol, unaware of {playerPossessive} presence.",
-      "{playerName} {playerVerb('disarms','sneaks past','throws a dagger','vanishes')} with deadly precision,",
-      "each step bringing {playerSubject.ToLower()} closer to the prize,",
-      "until the treasure is in {playerPossessive} hands. 🗝️"
-    ]
-  },
-  {
-    "Title": "Battle in the Ruins",
-    "Texts": [
-      "Crumbled walls and shattered pillars create a battlefield of shadows.",
-      "From the ruins, enemies emerge, hungry for blood.",
-      "{playerName} {playerVerb('swings','casts','looses','strikes')} with skill honed through countless battles,",
-      "each encounter testing {playerPossessive} resolve.",
-      "When the dust settles, {playerSubject.ToLower()} stands victorious, breathing heavily but unbowed. 🏛️🔥"
+    "Description": [
+      "{playerName} is on {playerObject} nightly patrol. It's a calm and quiet night in Nightfall City.",
+      "Suddenly, a shadow twist and leaps from the walls—a thieve or worse.",
+      "{playerName} launches back at the attacker, and their punches echo through the alley.",
+      "Each strike tests {playerObject} skill.",
+      "{playerSubject} attacks from behind, gips {enemyPossessive} hood and barely pulls it off to reveal {enemyPossessive} face.",
+      "{enemySubject} reaches back over, grips {playerObject} collar and throws {playerObject} over {enemyPossessive} shoulder to the ground.",
+      "Looking back up at {enemyObject}, {playerSubject.ToLower()} notices something...",
+      "Peeking out fron under {playerPossessive} unknown opponents hood..",
+      "is some backcombed bleach blonde hair. Who is this \"fancy\" bastard?",
+      "{playerName}: \"WTF, man! If you ruin my night let me at least return the favour.\""
     ]
   }
 ]

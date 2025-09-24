@@ -28,3 +28,5 @@
 /Users/emmaspitz/RiderProjects/nightfall-hunters/nightfall-hunters/obj/Debug/net8.0/ref/nightfall-hunters.dll
 /Users/emmaspitz/RiderProjects/nightfall-hunters/nightfall-hunters/obj/Debug/net8.0/nightfall-hunters.sourcelink.json
 /Users/emmaspitz/RiderProjects/nightfall-hunters/nightfall-hunters/bin/Debug/net8.0/story-nodes.json
+/Users/emmaspitz/RiderProjects/nightfall-hunters/nightfall-hunters/bin/Debug/net8.0/quest-nodes.json
+/Users/emmaspitz/RiderProjects/nightfall-hunters/nightfall-hunters/bin/Debug/net8.0/sidequest-nodes.json

@@ -1,0 +1,74 @@
+[
+  {
+    "Title": "The Square Rune",
+    "Texts": [
+      "A rune pulses with a single number.",
+      "Only by speaking its square root will you reveal the hidden passage."
+    ]
+  },  {
+    "Title": "The Twin Blades",
+    "Texts": [
+      "Two rival blades lie before you.",
+      "To choose wisely, you must find the smaller blade and the difference in their power."
+    ]
+  },{
+    "Title": "The Prism",
+    "Texts": [
+      "Three crystals shimmer with shifting hues.",
+      "Each glows with random RGB values, their combined light illuminating a hidden path."
+    ]
+  }, {
+    "Title": "The Chronicle Stone",
+    "Texts": [
+      "The stone whispers today’s day of the week.",
+      "Inscribe your event into it, and next time you return, it will remember."
+    ]
+  },  {
+    "Title": "The Festival Countdown",
+    "Texts": [
+      "A village elder asks: “When is the next holiday?”",
+      "Calculate how many days remain before celebration begins."
+    ]
+  },  {
+    "Title": "The Mirror Sentence",
+    "Texts": [
+      "Speak a sentence.",
+      "The Mirror of Shadows will echo it in reverse, testing your will."
+    ]
+  },  {
+    "Title": "The Festival Countdown",
+    "Texts": [
+      "A village elder asks: “When is the next holiday?”",
+      "Calculate how many days remain before celebration begins."
+    ]
+  },  {
+    "Title": "The Palindrome Gate",
+    "Texts": [
+      "A sealed gate only opens for words that read the same forward and backward. Speak carefully."
+    ]
+  },  {
+    "Title": "The Whispering Tome",
+    "Texts": [
+      "A tome demands a paragraph.",
+      "It counts how many times you utter a specific word before granting you knowledge."
+    ]
+  },  {
+    "Title": "The Number Vault",
+    "Texts": [
+      "Place 5 numbers into the vault.",
+      "To unlock its power, recall them in reverse order."
+    ]
+  },  {
+    "Title": "The Song of Vowels",
+    "Texts": [
+      "Speak a word. The spirits count the vowels within, their chorus growing stronger with each one."
+    ]
+  },  {
+    "Title": "The Gathering of Names",
+    "Texts": [
+      "You gather allies.",
+      "Add names one by one until you decide to stop.",
+      "Then, review the fellowship you’ve assembled, along with their number."
+    ]
+  }
+]

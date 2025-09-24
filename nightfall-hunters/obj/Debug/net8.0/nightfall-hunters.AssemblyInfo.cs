@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("nightfall-hunters")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e13980a276184f3c4a9971b45f494b33802da5f2")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9aab391962732ec524eab3dca2fb942a7b9d4d58")]
 [assembly: System.Reflection.AssemblyProductAttribute("nightfall-hunters")]
 [assembly: System.Reflection.AssemblyTitleAttribute("nightfall-hunters")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
