@@ -4,9 +4,11 @@ public class Rogue : Player
 {
     public override string Icon { get; set; } = "🗡️";
     public override string Role { get; set; } = "Rogue";
-
-    public Rogue(string name, Gender gender) : base(name, gender)
+    
+    public Rogue(string name, Gender gender)
+        : base(name, gender)
     {
+        MaxHp = 120;
         Hp = 120;
         Damage = 20;
     }

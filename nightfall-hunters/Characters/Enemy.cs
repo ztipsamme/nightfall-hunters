@@ -7,12 +7,14 @@ public class Enemy: Character
     
     public static List<Enemy> Enemies = new List<Enemy>
     {
-        new Enemy("Fangs", Gender.Male, 80, 10, 100),
-        new Enemy("Shadow", Gender.Male, 80, 12, 100),
-        new Enemy("Bloodling", Gender.Male, 80, 8, 100)
+        new Enemy("Fangs", Gender.Male, 80, 10),
+        new Enemy("Shadow", Gender.Male, 80, 12),
+        new Enemy("Bloodling", Gender.Male, 80, 8)
     };
     
-    public Enemy(string name, Gender gender, int hp, int damage, double gold) : base(name, gender, hp, damage, gold)
+    public Enemy(string name, Gender gender, int maxHp, int damage, double 
+            gold = 100) 
+        : base(name, gender, maxHp, damage, gold)
     {
     }
 

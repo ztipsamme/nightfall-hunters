@@ -4,9 +4,11 @@ public class Archer : Player
 {
     public override string Icon { get; set; } = "🏹";
     public override string Role { get; set; } = "Archer";
-
-    public Archer(string name, Gender gender) : base(name, gender)
+    
+    public Archer(string name, Gender gender)
+        : base(name, gender)
     {
+        MaxHp = 150;
         Hp = 150;
         Damage = 30;
     }

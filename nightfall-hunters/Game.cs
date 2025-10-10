@@ -47,16 +47,16 @@ public class Game
         Gender gender = Helper.ShowAndUseMenu<Gender>("Enter your gender");
         Ui.DrawDivider();
 
-        string[] roles = { "Warrior", "Mage", "Archer", "Rogue" };
+        string[] roles = { "Archer", "Mage", "Rogue", "Warrior" };
 
         int role = Helper.ShowAndUseMenu(roles, "Enter your role");
 
         Player p = role switch
         {
-            1 => Player = new Warrior(name, gender),
+            1 => Player = new Archer(name, gender),
             2 => Player = new Mage(name, gender),
-            3 => Player = new Archer(name, gender),
-            4 => Player = new Rogue(name, gender)
+            3 => Player = new Rogue(name, gender),
+            4 => Player = new Warrior(name, gender),
         };
 
         Ui.Continue("create your character");
