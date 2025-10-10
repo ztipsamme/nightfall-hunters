@@ -26,3 +26,4 @@
 /Users/emmaspitz/RiderProjects/nightfall-hunters/nightfall-hunters/obj/Debug/net8.0/nightfall-hunters.pdb
 /Users/emmaspitz/RiderProjects/nightfall-hunters/nightfall-hunters/obj/Debug/net8.0/nightfall-hunters.genruntimeconfig.cache
 /Users/emmaspitz/RiderProjects/nightfall-hunters/nightfall-hunters/obj/Debug/net8.0/ref/nightfall-hunters.dll
+/Users/emmaspitz/RiderProjects/nightfall-hunters/nightfall-hunters/obj/Debug/net8.0/nightfall-hunters.sourcelink.json
