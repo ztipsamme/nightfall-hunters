@@ -1,3 +1,5 @@
+using Nightfall_Hunters.Characters;
+
 namespace nightfall_hunters.classes;
 
 public class Warrior : Player
@@ -9,7 +11,7 @@ public class Warrior : Player
     // public Warrior(string name, Gender gender) 
     //     : base(name, gender, maxHp: 120, damage: 40)
     // {
-    // }
+    // }x
 
     public Warrior(string name, Gender gender)
         : base(name, gender)
@@ -19,13 +21,8 @@ public class Warrior : Player
         Damage = 40;
     }
 
-    public override void Attack(Character opponent)
+    public override void SpecialAttack(Character opponent)
     {
-        Console.WriteLine(
-            $"{Name} swings their blade towards {opponent.Name}!");
-        TakeDamage(opponent);
-
-        Console.WriteLine(
-            $"{Name} HP: {Hp} | {opponent.Name} HP: {opponent.Hp}");
+        AttackHelper.FormatActionMessage(Name, opponent, opponent.TakeDamage(Damage),"swings their blade towards");
     }
 }

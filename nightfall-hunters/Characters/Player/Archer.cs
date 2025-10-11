@@ -1,3 +1,5 @@
+using Nightfall_Hunters.Characters;
+
 namespace nightfall_hunters.classes;
 
 public class Archer : Player
@@ -13,12 +15,8 @@ public class Archer : Player
         Damage = 30;
     }
 
-    public override void Attack(Character opponent)
+    public override void SpecialAttack(Character opponent)
     {
-        Console.WriteLine($"{Name} shoots an arrow towards {opponent.Name}!");
-        TakeDamage(opponent);
-
-        Console.WriteLine(
-            $"{Name} HP: {Hp} | {opponent.Name} HP: {opponent.Hp}");
+        AttackHelper.FormatActionMessage(Name, opponent, opponent.TakeDamage(Damage),"shots an arrow towards");
     }
 }

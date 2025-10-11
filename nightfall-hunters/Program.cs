@@ -1,5 +1,6 @@
 ﻿using nightfall_hunters.classes;
 using Nightfall_Hunters.Game;
+using nightfall_hunters.Quests;
 
 namespace nightfall_hunters;
 
@@ -8,19 +9,19 @@ class Program
     static void Main(string[] args)
     {
         Game game = new Game();
-        
-        while (true) 
+
+        while (true)
         {
             Console.Clear();
+            
+            Ui.HeaderComponent(Game.Player);
 
-            Ui.HeaderComponent(game.Player);
-
-            if (game.Player == null)
+            if (Game.Player == null)
             {
                 game.CreateCharacter();
                 continue;
             }
-            
+
             game.MainMenu();
         }
     }

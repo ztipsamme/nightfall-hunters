@@ -5,27 +5,42 @@ public static class Helper
     // Solutions discussed, improved and co-designed with ChatGPT
     private static Random _rng = new Random();
 
+    public static void Prompt(string prompt)
+    {
+        Ui.TextColor(Ui.PrimaryColor);
+        Console.Write(prompt);
+        Ui.TextColor(Ui.SecondaryColor);
+        Console.Write(" ➤ ");
+    }
+    
+    public static void DrawMenuOptions(IEnumerable<string> options)
+    {
+        int i = 1;
+        foreach (var option in options)
+        {
+            Console.WriteLine($"{i}. {option}");
+            i++;
+        }
+    }
+    
     public static T AskUntilValid<T>(string prompt, string errMessage,
         Func<string, bool> validate = null, Func<string, T> convert = null)
     {
-        // defaults if non provided
-        validate ??= input => !string.IsNullOrWhiteSpace(input);
-        convert ??= input => (T)Convert.ChangeType(input, typeof(T));
-
         while (true)
         {
-            Console.Write($"{prompt}: ");
+            Prompt(prompt);
             int startline = Ui.GetStartLine;
-
+            
+            Ui.TextColor();
             string? input = Console.ReadLine() ?? "";
 
             if (validate(input)) return convert(input);
 
-            Console.ForegroundColor = ConsoleColor.Red;
+            Ui.TextColor(Ui.DangerColor);
             Console.WriteLine($"{errMessage} Try again.");
             Thread.Sleep(1200);
 
-            Console.ResetColor();
+            Ui.TextColor();
             Ui.Clear(startline);
         }
     }
@@ -36,10 +51,7 @@ public static class Helper
             throw new ArgumentException("No options where provided.");
 
         Console.WriteLine($"{prompt}: ");
-
-        for (int i = 0; i < options.Length; i++)
-            Console.WriteLine($"{i + 1}: {options[i]}");
-
+        DrawMenuOptions(options);
 
         var selected = AskUntilValid("Select",
             $"Must be between 1 and {options.Length}.",
@@ -93,6 +105,7 @@ public static class Helper
             input => optionList[int.Parse(input) - 1]
         );
     }
+    
 
     public static int RollDice(int sides = 8)
     {
