@@ -1,0 +1,1 @@
+In GameManager you can toogle the moch-data by setting _useMockData
