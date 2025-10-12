@@ -8,21 +8,21 @@ class Program
 {
     static void Main(string[] args)
     {
-        Game game = new Game();
+        GameManager gameManager = new GameManager();
 
         while (true)
         {
             Console.Clear();
             
-            Ui.HeaderComponent(Game.Player);
+            Ui.HeaderComponent(GameManager.Player);
 
-            if (Game.Player == null)
+            if (GameManager.Player == null)
             {
-                game.CreateCharacter();
+                gameManager.CreateCharacter();
                 continue;
             }
 
-            game.MainMenu();
+            gameManager.MainMenu();
         }
     }
 }

@@ -15,13 +15,12 @@ public class QuestManager
             "Crumbled walls and shattered pillars create a battlefield of shadows."),
     };
 
-    public void ListMainQuestsTitles()
+    public static Puzzle[] PuzzleQuest =
     {
-        foreach (var quest in MainQuests)
-        {
-            Console.WriteLine($"{quest.Title}");
-        }
-    }
+        new MixPoison("🧪 The Art of Quiet Death 🧪",
+            "Mix the forbidden ingredients to craft a poison of legend. One mistake, and the venom will claim you instead.",
+            25)
+    };
 
     public void PlayNextMainQuest()
     {
@@ -40,5 +39,7 @@ public class QuestManager
 
     public void PlayRandomBattle(Player player) =>
         new RandomBattle(player, EnemyFactory.GetRandom()).Run();
+
+    public void PlayPuzzleQuest() => PuzzleQuest[new Random().Next(0, PuzzleQuest.Length)].Run();
     
 }

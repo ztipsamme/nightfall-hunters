@@ -5,7 +5,7 @@ namespace nightfall_hunters.Quests;
 public abstract class Quest
 {
     public int TotalQuests = 0;
-    protected Player _player = Game.Player;
+    protected Player _player = GameManager.Player;
 
     public string Title;
     public string Description;
