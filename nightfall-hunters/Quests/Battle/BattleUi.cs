@@ -2,12 +2,16 @@ using nightfall_hunters.classes;
 
 namespace nightfall_hunters.Quests.Battle;
 
-public class BattleUI
+public class BattleUi
 {
-    public void ShowBattleStats(Player player, Enemy enemy)
+    public void ShowOrUpdateEnemyStats(Enemy enemy)
     {
-        Console.WriteLine(
-            $"{player.Icon} {player.Name} HP: {player.Hp} | {enemy.Icon} {enemy.Name} HP: {enemy.Hp}");
+        int startLine = Ui.GetStartLine;
+        Console.SetCursorPosition(0,8);
+        Ui.ClearLine();
+        Console.SetCursorPosition(0,8);
+        Console.WriteLine(enemy.Info());
+        Console.SetCursorPosition(0, startLine + 1);
     }
 
     public int BattleMenuSelect(string[] options)

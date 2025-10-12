@@ -18,6 +18,18 @@ public abstract class Player : Character, ILootGold
         Console.WriteLine($"{Name} defends and takes less damage.");
         Hp -= enemy.Damage / 2;
     }
+    
+    public override int TakeDamage(int damage)
+    {
+        int damageBonus = Helper.RollDice();
+
+        int damageTaken = damage + damageBonus;
+        Hp -= damageTaken;
+        
+        Ui.UpdateHeaderComponent(this);
+        
+        return damageTaken;
+    }
 
     public bool TryEscapeBattle(Enemy enemy)
     {
@@ -37,6 +49,7 @@ public abstract class Player : Character, ILootGold
 
         if (Hp == MaxHp) Console.WriteLine("❤️ You've reached max HP!");
         else Console.WriteLine($"❤️You've healed +{amount}");
+        Ui.UpdateHeaderComponent(this);
     }
     
     public int LootGold(Character opponent)
@@ -45,12 +58,14 @@ public abstract class Player : Character, ILootGold
         Gold += lootGold;
         opponent.Gold -= Gold;
         
+        Ui.UpdateHeaderComponent(this);
         return lootGold;
     }
     
     public void Pay(int amount)
     {
         Gold -= amount;
+        Ui.UpdateHeaderComponent(this);
     }
     
     public void AddItem(Item item) => Inventory.Add(item);
@@ -75,5 +90,7 @@ public abstract class Player : Character, ILootGold
 
         item.Use(this);
         Inventory.Remove(item);
+        
+        Ui.UpdateHeaderComponent(this);
     }
 }

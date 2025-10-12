@@ -5,20 +5,9 @@ namespace nightfall_hunters.Shop;
 public class ShopManager
 {
     Shop _shop = new();
-    
+
     private void ShowInventory(Player player)
     {
-        List<Item> items = new()
-        {
-            new Item("Medicin", 50, 30),
-            new Item("Potion", 100, 75),
-        };
-
-        foreach (Item item in items)
-        {
-            _shop.AddItem(item);
-        }
-
         while (true)
         {
             int startLine = Ui.GetStartLine;
@@ -49,6 +38,17 @@ public class ShopManager
 
     public void Enter(Player player)
     {
+        List<Item> items = new()
+        {
+            new Item("Medicin", 50, 30),
+            new Item("Potion", 100, 75),
+        };
+
+        foreach (Item item in items)
+        {
+            _shop.AddItem(item);
+        }
+        
         Ui.Header("📖 The Bookstore (secret curiosity _shop) 📖",
             ConsoleColor.DarkBlue);
 

@@ -36,10 +36,4 @@ public class Game
     {
         Player = CharacterCreator.CreateCharacter();
     }
-
-    public static void Heal()
-    {
-        // Implement selection: Medicin, Rest
-        Player.Heal();
-    }
 }

@@ -6,10 +6,10 @@ public class BattleEngine
 {
     private Player _player;
     private Enemy _enemy;
-    private BattleUI _ui;
+    private BattleUi _ui;
     private bool _stopBattle;
 
-    public BattleEngine(Player player, Enemy enemy, BattleUI ui)
+    public BattleEngine(Player player, Enemy enemy, BattleUi ui)
     {
         _player = player;
         _enemy = enemy;
@@ -45,11 +45,9 @@ public class BattleEngine
             PlayerTurn();
             if (_enemy.Hp > 0 && !_stopBattle)
             {
-                Ui.DrawDivider();
                 EnemyTurn();
             }
 
-            Ui.DrawDivider();
             Ui.DrawDivider('—');
         }
 
@@ -63,7 +61,7 @@ public class BattleEngine
         int selected =
             _ui.BattleMenuSelect(options.Select(o => o.Label).ToArray());
         options[selected - 1].Action();
-        _ui.ShowBattleStats(_player, _enemy);
+        _ui.ShowOrUpdateEnemyStats(_enemy);
     }
 
     private void EnemyTurn()
@@ -73,8 +71,7 @@ public class BattleEngine
             Thread.Sleep(800);
             if (Helper.RollDice() % 2 == 0) _enemy.BasicAttack(_player);
             else _enemy.SpecialAttack(_player);
-
-            _ui.ShowBattleStats(_player, _enemy);
+            _ui.ShowOrUpdateEnemyStats(_enemy);
         }
     }
 }

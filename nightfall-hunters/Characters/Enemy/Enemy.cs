@@ -28,4 +28,7 @@ public abstract class Enemy : Character, ILootGold
     {
         Hp = MaxHp;
     }
+
+    public override string Info() =>
+        $"{Icon} {Name} | ❤️ {Hp}/{MaxHp} | 💰 {Gold}";
 }

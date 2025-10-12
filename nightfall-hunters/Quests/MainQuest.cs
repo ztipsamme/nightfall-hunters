@@ -5,6 +5,7 @@ namespace nightfall_hunters.Quests;
 
 public class MainQuest : Quest, IBattle
 {
+    private BattleUi _ui;
     public Player Player
     {
         get => _player;
@@ -13,16 +14,17 @@ public class MainQuest : Quest, IBattle
     public bool Completed { get; private set; } = false;
 
     public MainQuest(Enemy enemy, string title, string description
-    ) : base(title, description)
+   ) : base(title, description)
     {
         Enemy = enemy;
+        _ui = new BattleUi();
     }
 
     private void Intro()
     {
         Console.WriteLine(Title);
+        _ui.ShowOrUpdateEnemyStats(Enemy);
         Console.WriteLine(Description);
-        Console.WriteLine($"⚔️ Enemy: {Enemy.Info()}");
         Ui.DrawDivider('-');
     }
 
@@ -36,7 +38,7 @@ public class MainQuest : Quest, IBattle
         Intro();
 
         // Implementing ui as an instance is better for conditional stuff
-        var ui = new BattleUI();
+        var ui = new BattleUi();
         var battle = new BattleEngine(Player, Enemy, ui);
         bool playerWon = battle.StartBattle();
 

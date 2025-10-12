@@ -28,7 +28,7 @@ public class RandomBattle : IBattle
 
         Intro();
 
-        var ui = new BattleUI();
+        var ui = new BattleUi();
         var battle = new BattleEngine(Player, Enemy, ui);
         bool playerWon = battle.StartBattle();
 

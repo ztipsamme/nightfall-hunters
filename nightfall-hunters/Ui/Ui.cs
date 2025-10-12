@@ -20,12 +20,18 @@ public static partial class Ui
     // Place above Console.WriteLine and below Console.Write
     public static int GetStartLine => Console.GetCursorPosition().Top;
 
+    public static void ClearLine(int? startLine = null)
+    {
+        int lien = startLine ?? GetStartLine;
+        Console.SetCursorPosition(0, lien);
+        Console.Write(new string(' ', Console.WindowWidth));
+    }
+
     public static void Clear(int startLine = 0)
     {
         for (int i = startLine; i < Console.WindowHeight; i++)
         {
-            Console.SetCursorPosition(0, i);
-            Console.Write(new string(' ', Console.WindowWidth));
+            ClearLine(i);
         }
 
         Console.SetCursorPosition(0, startLine);

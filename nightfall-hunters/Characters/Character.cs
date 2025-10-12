@@ -58,22 +58,23 @@ public abstract class Character : Pronouns
 
     public void BasicAttack(Character opponent)
     {
-        AttackHelper.FormatActionMessage(Name, opponent, opponent.TakeDamage(Damage),"punches", "in the face");
+        AttackHelper.FormatActionMessage(Name, opponent,
+            opponent.TakeDamage(Damage), "punches", "in the face");
     }
 
     public abstract void
         SpecialAttack(Character opponent); // Could also be an interface?
 
-    public int TakeDamage(int damage)
+    public virtual int TakeDamage(int damage)
     {
         int damageBonus = Helper.RollDice();
 
         int damageTaken = damage + damageBonus;
         Hp -= damageTaken;
-
+        
         return damageTaken;
     }
 
-    public string Info() =>
+    public virtual string Info() =>
         $"👤 {Name} | {Icon} {Role} | ❤️ {Hp}/{MaxHp} | 💥 {Damage} | 💰 {Gold}";
 }
