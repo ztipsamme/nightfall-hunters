@@ -1,8 +1,9 @@
 using Nightfall_Hunters.Characters;
+using nightfall_hunters.classes;
 
 namespace nightfall_hunters.Quests;
 
-public static class QuestManager
+public class QuestManager
 {
    public static MainQuest[] MainQuests =
     {
@@ -14,7 +15,7 @@ public static class QuestManager
             "Crumbled walls and shattered pillars create a battlefield of shadows."),
     };
 
-    public static void ListMainQuestsTitles()
+    public void ListMainQuestsTitles()
     {
         foreach (var quest in MainQuests)
         {
@@ -22,7 +23,7 @@ public static class QuestManager
         }
     }
 
-    public static void PlayNextMainQuest()
+    public void PlayNextMainQuest()
     {
         MainQuest? nextQuest =
             MainQuests.FirstOrDefault(quest => quest.Completed == false);
@@ -37,7 +38,7 @@ public static class QuestManager
         nextQuest.Run();
     }
 
-    public static void PlayRandomBattle(Player player) =>
+    public void PlayRandomBattle(Player player) =>
         new RandomBattle(player, EnemyFactory.GetRandom()).Run();
     
 }

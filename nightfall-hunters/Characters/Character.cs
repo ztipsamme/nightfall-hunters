@@ -1,3 +1,5 @@
+using Nightfall_Hunters.Characters;
+
 namespace nightfall_hunters.classes;
 
 public abstract class Character : Pronouns
@@ -52,6 +54,11 @@ public abstract class Character : Pronouns
         Hp = maxHp;
         Damage = damage;
         Gold = gold;
+    }
+
+    public void BasicAttack(Character opponent)
+    {
+        AttackHelper.FormatActionMessage(Name, opponent, opponent.TakeDamage(Damage),"punches", "in the face");
     }
 
     public abstract void

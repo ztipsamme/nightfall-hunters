@@ -14,7 +14,7 @@ public partial class Ui
             using (var writer = new System.IO.StringWriter())
             {
                 Console.SetOut(writer);
-                content(); // Run inner content
+                content(); // Enter inner content
                 writer.Flush();
                 lines.AddRange(writer.ToString()
                     .Split(new[] { Environment.NewLine },

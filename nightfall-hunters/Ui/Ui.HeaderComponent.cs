@@ -1,3 +1,5 @@
+using nightfall_hunters.classes;
+
 namespace nightfall_hunters;
 
 public static partial class Ui

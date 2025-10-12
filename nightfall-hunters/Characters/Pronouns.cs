@@ -3,7 +3,7 @@ namespace nightfall_hunters.classes;
 public class Pronouns
 {
     // Idea refined together with ChatGPT
-    public Gender Gender { get; set; }
+    public Gender Gender { get; init; }
 
     public string PronounSubject => Gender switch
     {

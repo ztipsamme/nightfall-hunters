@@ -1,9 +1,11 @@
+using System.Collections;
+
 namespace nightfall_hunters;
 
 public static class Helper
 {
     // Solutions discussed, improved and co-designed with ChatGPT
-    private static Random _rng = new Random();
+    private static Random _rng = new();
 
     public static void Prompt(string prompt)
     {
@@ -12,7 +14,7 @@ public static class Helper
         Ui.TextColor(Ui.SecondaryColor);
         Console.Write(" ➤ ");
     }
-    
+
     public static void DrawMenuOptions(IEnumerable<string> options)
     {
         int i = 1;
@@ -22,7 +24,7 @@ public static class Helper
             i++;
         }
     }
-    
+
     public static T AskUntilValid<T>(string prompt, string errMessage,
         Func<string, bool> validate = null, Func<string, T> convert = null)
     {
@@ -30,7 +32,7 @@ public static class Helper
         {
             Prompt(prompt);
             int startline = Ui.GetStartLine;
-            
+
             Ui.TextColor();
             string? input = Console.ReadLine() ?? "";
 
@@ -45,6 +47,21 @@ public static class Helper
         }
     }
 
+    // ChatGPT helped
+    public static int AskFromList<T>(
+        IList<T> options,
+        string prompt = "Select",
+        Func<T, string>? display = null)
+    {
+        return AskUntilValid(
+            prompt,
+            $"Must be int between 1 and {options.Count}",
+            input => int.TryParse(input, out int opt) && opt > 0 &&
+                     opt <= options.Count,
+            input => int.Parse(input) - 1
+        );
+    }
+
     public static int ShowAndUseMenu(string[] options, string prompt = "Select")
     {
         if (options.Length == 0)
@@ -53,15 +70,7 @@ public static class Helper
         Console.WriteLine($"{prompt}: ");
         DrawMenuOptions(options);
 
-        var selected = AskUntilValid("Select",
-            $"Must be between 1 and {options.Length}.",
-            validate: input =>
-                int.TryParse(input, out int opt) && opt >= 1 &&
-                opt <= options.Length,
-            convert: input => int.Parse(input)
-        );
-
-        return selected;
+        return AskFromList(options);
     }
 
     public static void ShowAndUseMenu(List<(string, Action)> options,
@@ -72,15 +81,9 @@ public static class Helper
 
         Console.WriteLine($"{prompt}: ");
         for (int i = 0; i < optionList.Count; i++)
-            Console.WriteLine($"{i + 1}: {optionList[i].Item1}");
+            Console.WriteLine($"{i + 1}. {optionList[i].Item1}");
 
-
-        var selected = AskUntilValid<(string, Action)>("Select",
-            $"Must be between 1 and {optionList.Count}.",
-            input => int.TryParse(input, out int opt) && opt > 0 &&
-                     opt <= optionList.Count,
-            input => optionList[int.Parse(input) - 1]
-        );
+        var selected = options[AskFromList(options)];
 
         Ui.Clear(startLine);
         Ui.LoadingAnimation();
@@ -97,15 +100,9 @@ public static class Helper
         for (int i = 0; i < optionList.Count; i++)
             Console.WriteLine($"{i + 1}. {optionList[i]}");
 
-        return AskUntilValid<T>(
-            "Select",
-            $"Must be int between 1 and {optionList.Count}",
-            input => int.TryParse(input, out int opt) && opt > 0 &&
-                     opt <= optionList.Count,
-            input => optionList[int.Parse(input) - 1]
-        );
+        return optionList[AskFromList(optionList)];
     }
-    
+
 
     public static int RollDice(int sides = 8)
     {

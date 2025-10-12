@@ -1,3 +1,5 @@
+using nightfall_hunters.classes;
+
 namespace nightfall_hunters.Quests.Battle;
 
 public class BattleValidator

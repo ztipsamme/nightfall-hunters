@@ -22,6 +22,7 @@ public class RandomBattle : IBattle
     public void Run()
     {
         Console.WriteLine("=== Random Battle ===");
+        Ui.Header("🗡️ Random Battle 🗡️", Ui.SecondaryColor);
 
         if (!BattleValidator.ReadyToBattle(Player)) return;
 

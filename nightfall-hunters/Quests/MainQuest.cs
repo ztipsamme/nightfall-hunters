@@ -28,12 +28,14 @@ public class MainQuest : Quest, IBattle
 
     public override void Run()
     {
-        Console.WriteLine("=== Main Quest ===");
+        Ui.Header("📜 Main Quest 📜", Ui.SecondaryColor);
+
 
         if (!BattleValidator.ReadyToBattle(Player)) return;
 
         Intro();
 
+        // Implementing ui as an instance is better for conditional stuff
         var ui = new BattleUI();
         var battle = new BattleEngine(Player, Enemy, ui);
         bool playerWon = battle.StartBattle();

@@ -16,14 +16,33 @@ public class BattleEngine
         _ui = ui;
     }
 
+    private (string Label, Action Action)[] BattleOptions()
+    {
+        return new (string, Action)[]
+        {
+            ("Basic Attack", () => _player.BasicAttack(_enemy)),
+            ("Special Attack", () => _player.SpecialAttack(_enemy)),
+            ("Defend", () => _player.Defend(_enemy)),
+            ("Try Escape", () =>
+            {
+                if (_player.TryEscapeBattle(_enemy))
+                {
+                    _enemy.ResetHp();
+                    _stopBattle = true;
+                }
+            })
+        };
+    }
+
     public bool StartBattle()
     {
-        string[] options = { "SpecialAttack", "Defend", "TryEscape" };
-        Ui.BorderComponent(() => Helper.DrawMenuOptions(options));
+        var options = BattleOptions();
+        Ui.BorderComponent(() =>
+            Helper.DrawMenuOptions(options.Select(o => o.Label).ToArray()));
 
         while (_player.Hp > 0 && _enemy.Hp > 0 && !_stopBattle)
         {
-            PlayerTurn(options);
+            PlayerTurn();
             if (_enemy.Hp > 0 && !_stopBattle)
             {
                 Ui.DrawDivider();
@@ -38,29 +57,12 @@ public class BattleEngine
         return _player.Hp > 0 && _enemy.Hp <= 0;
     }
 
-    private void PlayerTurn(string[] options)
+    private void PlayerTurn()
     {
-        int selected = _ui.BattleMenuSelect(options);
-
-        switch (selected)
-        {
-            case 1:
-                _player.SpecialAttack(_enemy);
-                break;
-            case 2:
-                _player.Defend(_enemy);
-                break;
-            case 3:
-                if (_player.TryEscapeBattle(_enemy))
-                {
-                    _enemy.ResetHp();
-                    _stopBattle = true;
-                    return;
-                }
-
-                break;
-        }
-
+        var options = BattleOptions();
+        int selected =
+            _ui.BattleMenuSelect(options.Select(o => o.Label).ToArray());
+        options[selected - 1].Action();
         _ui.ShowBattleStats(_player, _enemy);
     }
 
@@ -69,7 +71,9 @@ public class BattleEngine
         if (_enemy.Hp > 0)
         {
             Thread.Sleep(800);
-            _enemy.SpecialAttack(_player);
+            if (Helper.RollDice() % 2 == 0) _enemy.BasicAttack(_player);
+            else _enemy.SpecialAttack(_player);
+
             _ui.ShowBattleStats(_player, _enemy);
         }
     }
